@@ -5,5 +5,6 @@ class Settings(BaseSettings):
     database_url: str
     auth_private_key: str
     auth_public_key: str
+    users_service_addr: str
     
 settings = Settings()

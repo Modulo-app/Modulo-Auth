@@ -25,4 +25,4 @@ requires = ["uv_build>=0.11.21,<0.12.0"]
 build-backend = "uv_build"
 
 [tool.uv.sources]
-modulo-common = { git = "https://github.com/modulo-app/Modulo-Common", tag = "v0.3.0" }
+modulo-common = { git = "https://github.com/modulo-app/Modulo-Common", tag = "v0.3.1" }
