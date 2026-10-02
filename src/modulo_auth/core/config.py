@@ -6,5 +6,9 @@ class Settings(BaseSettings):
     auth_private_key: str
     auth_public_key: str
     users_service_addr: str
-    
+    apple_client_id: str
+    access_token_ttl_seconds: int = 900
+    refresh_token_ttl_days: int = 30
+    grpc_port: int = 50051
+
 settings = Settings()

@@ -2,7 +2,7 @@ from modulo_auth.refresh_token_entity import RefreshTokenEntity
 from modulo_auth.repository.refresh_token_repository import RefreshTokenRepository
 from sqlalchemy.orm import Session
 from sqlalchemy import select
-from datetime import datetime
+from datetime import datetime, timezone
 
 class DefaultRefreshTokenRepository(RefreshTokenRepository):
 
@@ -15,7 +15,7 @@ class DefaultRefreshTokenRepository(RefreshTokenRepository):
         new_entity.token_hash = token_hash
         new_entity.device_info = device_info
         new_entity.expires_at = expires_at
-        new_entity.issued_at = datetime.now()
+        new_entity.issued_at = datetime.now(timezone.utc)
         
         self.database.add(new_entity)
         self.database.commit()
@@ -38,7 +38,7 @@ class DefaultRefreshTokenRepository(RefreshTokenRepository):
         if token_to_revoke is None:
             return
         
-        token_to_revoke.revoked_at = datetime.now()
+        token_to_revoke.revoked_at = datetime.now(timezone.utc)
         self.database.commit()
 
     def revoke_all_for_user(self, user_id):
